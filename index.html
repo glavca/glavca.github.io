@@ -1,5 +1,78 @@
-<html>
+﻿<html>
+<head>
+    <meta charset="utf-8"/>
+    <tittle>KODIRNIK </tittle>
+
+    <script>
+
+function prevedi()
+{
+    var tabela = {};
+
+	tabela['a'] = "35";
+	tabela['b'] = "18";
+	tabela['c'] = "55";
+	tabela['č'] = "87";
+	tabela['d'] = "47";
+	tabela['e'] = "93";
+	tabela['f'] = "19";
+	tabela['g'] = "78";
+	tabela['h'] = "63";
+	tabela['i'] = "82";
+	tabela['j'] = "14";
+	tabela['k'] = "23";
+	tabela['l'] = "39";
+	tabela['m'] = "16";
+	tabela['n'] = "74";
+	tabela['o'] = "66";
+	tabela['p'] = "73";
+	tabela['r'] = "32";
+	tabela['s'] = "25";
+	tabela['š'] = "57";
+	tabela['t'] = "81";
+	tabela['u'] = "28";
+	tabela['v'] = "77";
+	tabela['z'] = "99";
+	tabela['ž'] = "36";
+	tabela['.'] = "/";
+	tabela['?'] = "\ ";
+	tabela[','] = "'";
+	tabela['!'] = "|";
+	tabela[' '] = "0";
+
+
+	var besedilo= document.getElementById("mySearch").value;
+
+	var rezultat = "";
+	//alert("buu" + besedilo); abeceda  351855/
+
+
+	for(var i=0; i<besedilo.length;i++)
+	{
+		var crka = besedilo[i];
+		var skrivnost = tabela[crka];
+		rezultat = rezultat  + skrivnost;
+	}
+
+	document.getElementById("rezultat").value = rezultat;
+
+}
+
+    </script>
+</head>
+
 <body>
-    <strong>Dobrodo�el</strong> klikni <a href="sifra.html">tukaj</a>
+
+    <p>Vtipkajte besedilo v spodnji prostor. </p>
+
+    <input type="search" id="mySearch" placeholder="Besedilo">
+
+    <input type="button" id="gumb" onclick="prevedi()" value="Zakodiraj">
+
+    <br />
+    Rezultat:
+    <br />
+<textarea type="text" id="rezultat" cols="40" rows="10">
+</textarea>
+
 </body>
-</html>
