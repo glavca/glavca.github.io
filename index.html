@@ -5,40 +5,61 @@
 
     <script>
 
+        function invert(obj) {
+
+            var new_obj = {};
+
+            for (var prop in obj) {
+                if (obj.hasOwnProperty(prop)) {
+                    new_obj[obj[prop]] = prop;
+                }
+            }
+
+            return new_obj;
+        };
+
+        var tabela = {};
+        
+
+        tabela['a'] = "35";
+        tabela['b'] = "18";
+        tabela['c'] = "55";
+        tabela['č'] = "87";
+        tabela['d'] = "47";
+        tabela['e'] = "93";
+        tabela['f'] = "19";
+        tabela['g'] = "78";
+        tabela['h'] = "63";
+        tabela['i'] = "82";
+        tabela['j'] = "14";
+        tabela['k'] = "23";
+        tabela['l'] = "39";
+        tabela['m'] = "16";
+        tabela['n'] = "74";
+        tabela['o'] = "66";
+        tabela['p'] = "73";
+        tabela['r'] = "32";
+        tabela['s'] = "25";
+        tabela['š'] = "57";
+        tabela['t'] = "81";
+        tabela['u'] = "28";
+        tabela['v'] = "77";
+        tabela['z'] = "99";
+        tabela['ž'] = "36";
+        tabela['.'] = "/";
+        tabela['?'] = "\ ";
+        tabela[','] = "'";
+        tabela['!'] = "|";
+        tabela[' '] = "0";
+
+
+        var tabela2 = invert(tabela);
+
+
 function prevedi()
 {
-    var tabela = {};
 
-	tabela['a'] = "35";
-	tabela['b'] = "18";
-	tabela['c'] = "55";
-	tabela['č'] = "87";
-	tabela['d'] = "47";
-	tabela['e'] = "93";
-	tabela['f'] = "19";
-	tabela['g'] = "78";
-	tabela['h'] = "63";
-	tabela['i'] = "82";
-	tabela['j'] = "14";
-	tabela['k'] = "23";
-	tabela['l'] = "39";
-	tabela['m'] = "16";
-	tabela['n'] = "74";
-	tabela['o'] = "66";
-	tabela['p'] = "73";
-	tabela['r'] = "32";
-	tabela['s'] = "25";
-	tabela['š'] = "57";
-	tabela['t'] = "81";
-	tabela['u'] = "28";
-	tabela['v'] = "77";
-	tabela['z'] = "99";
-	tabela['ž'] = "36";
-	tabela['.'] = "/";
-	tabela['?'] = "\ ";
-	tabela[','] = "'";
-	tabela['!'] = "|";
-	tabela[' '] = "0";
+	
 
 
 	var besedilo= document.getElementById("mySearch").value;
@@ -57,6 +78,31 @@ function prevedi()
 	document.getElementById("rezultat").value = rezultat;
 
 }
+        function razvedi()
+        {
+            var besedilo = document.getElementById("mySearch").value;
+
+            var rezultat = "";
+            var i = 0;
+            while (i < besedilo.length)
+            {
+                var znak = besedilo[i];
+                var prevod = tabela2[znak];
+                if (prevod != undefined)
+                {
+                   rezultat = rezultat + prevod;
+                }
+                i = i + 1;
+                if (prevod == undefined)
+                {
+                    znak = znak + besedilo[i];
+                    prevod = tabela2[znak];
+                    rezultat = rezultat + prevod;
+                    i = i + 1;
+                }
+            }
+            document.getElementById("rezultat").value = rezultat;
+        }
 
     </script>
 </head>
@@ -67,6 +113,8 @@ function prevedi()
 
     <input type="search" id="mySearch" placeholder="Besedilo">
 
+    <input type="button" id="gumb2" onclick="razvedi()" value="Razkodiraj">
+    
     <input type="button" id="gumb" onclick="prevedi()" value="Zakodiraj">
 
     <br />
